@@ -2,3 +2,7 @@ include ':handheld'
 include ':wear'
 include ':common'
 include ':PebbleKit'
+
+include ':JRAF'
+
+project(':JRAF').projectDir = new File('../jraf-android-util/library')

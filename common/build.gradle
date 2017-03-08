@@ -9,6 +9,10 @@ android {
         targetSdkVersion targetSdkVersion
     }
 
+    dataBinding {
+        enabled = true
+    }
+
     buildTypes {
         release {
             // Do not minify a library (that would trim everything!)
@@ -24,6 +28,9 @@ dependencies {
     compile "com.google.android.gms:play-services-wearable:${playServicesVersion}"
 
     // Other libs
-    compile 'com.jakewharton:butterknife:8.2.1'
-    compile 'com.github.BoD:jraf-android-util:-SNAPSHOT'
+    compile 'com.jakewharton:butterknife:8.5.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.5.1'
+
+    //compile 'com.github.BoD:jraf-android-util:-SNAPSHOT'
+    compile project(':JRAF')
 }

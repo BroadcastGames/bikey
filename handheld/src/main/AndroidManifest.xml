@@ -39,7 +39,7 @@
 
         <!-- Crashlytics api key -->
         <meta-data
-            android:name="io.fabric.ApiKey"
+            android:name="com.crashlytics.ApiKey"
             android:value="${apiKeyFabric}" />
 
 

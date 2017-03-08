@@ -9,11 +9,11 @@ buildscript {
         maven { url 'https://maven.fabric.io/public' }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:2.2.0-alpha6'
-        classpath 'com.github.ben-manes:gradle-versions-plugin:0.13.0'
-        classpath 'ca.rmen:lib-french-revolutionary-calendar:1.5.0'
+        classpath 'com.android.tools.build:gradle:2.3.0'
+
+        classpath 'com.github.ben-manes:gradle-versions-plugin:0.14.0'
+        classpath 'ca.rmen:lib-french-revolutionary-calendar:1.5.2'
         classpath 'io.fabric.tools:gradle:1.21.7'
-        classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
     }
 }
 
@@ -24,6 +24,13 @@ allprojects {
         maven { url "https://jitpack.io" }
         maven { url 'https://maven.fabric.io/public' }
     }
+
+    // Check for system environment variable to trigger use of /tmp RAM disk.
+    if (System.env['AS_USE_TMP_BUILDDIR'] != null) {
+        // /tmp is tmpfs, RAM disk
+        buildDir = "/tmp/androidstudio/${rootProject.name}/${project.name}"
+    }
+    println "allprojects buildDir " + buildDir
 }
 
 task clean(type: Delete) {
@@ -88,11 +95,12 @@ ext.gitSha1 = gitSha1()
 ext.buildDate = buildDate()
 
 // Versions used across modules
-ext.compileSdkVersion = 24
-ext.targetSdkVersion = 22
-ext.buildToolsVersion = '24.0.0'
-ext.supportLibVersion = '24.0.0'
-ext.playServicesVersion = '9.2.1'
+ext.compileSdkVersion = 25
+ext.targetSdkVersion = 25
+ext.buildToolsVersion = '25.0.2'
+ext.supportLibVersion = '25.2.0'
+// Reference on where to get version: https://developers.google.com/android/guides/setup
+ext.playServicesVersion = '10.2.0'
 
 // Splash screen
 println """\n

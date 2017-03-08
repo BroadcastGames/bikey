@@ -44,5 +44,4 @@
         <activity android:name="org.jraf.android.bikey.wearable.app.display.DisplayActivity" />
     </application>
 
-
 </manifest>
